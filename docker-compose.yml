@@ -1,0 +1,8 @@
+version: '2.1'
+services:
+
+  newsbeuter:
+    image: "newsbeuter:2.11"
+    build: .
+    
+ 
