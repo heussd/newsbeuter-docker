@@ -3,7 +3,7 @@
 
 # Important files are
 # /data/urls
-# /data/news.db
+# /data-to-copy/news.db
 # /data/news.db.lock
 # /data/news.error.log
 
@@ -39,8 +39,10 @@ RUN		apt-get remove -y $BUILD_DEPS && \
 # How often RSS feeds are queried, time in $(sleep)-format
 ENV		RELOAD_EVERY=10m
 
+COPY		newsbeuter-data-to-copy.sh /root/
+
 # Ask newsbeuter to refresh all (and then terminate), log to STDOUT
-ENTRYPOINT	while newsbeuter -u /data/urls -d /dev/fd/1 -l 5 -x reload; echo "Waiting $RELOAD_EVERY to reload..."; do sleep $RELOAD_EVERY; done
+ENTRYPOINT	["./newsbeuter-data-to-copy.sh"]
 
 
 #HEALTHCHECK	--interval=30m --timeout=30m \

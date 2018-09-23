@@ -2,7 +2,5 @@ version: '2.1'
 services:
 
   newsbeuter:
-    image: "newsbeuter:2.11"
+    image: "newsbeuter-copy-data:2.11"
     build: .
-    
- 
